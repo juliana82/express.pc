@@ -1,3 +1,4 @@
+//script.js
 let computadoresDisponiveis = 300;
 
 // Função para mostrar a aba selecionada
@@ -146,3 +147,4 @@ function login(event) {
 
 
 document.getElementById('area').addEventListener('change', atualizarMaterias);
+

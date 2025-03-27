@@ -1,0 +1,43 @@
+# Arquivos de log e temporários
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# Dependências
+node_modules/
+package-lock.json        # Importante manter no repositório
+yarn.lock                # Importante manter no repositório
+npm-debug.log
+yarn-error.log
+
+# Arquivos de build e distribuição
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+
+# Configurações do Firebase (MUITO IMPORTANTE!)
+firebase-config.js       # Ou o nome correto do seu arquivo!
+src/config/firebaseConfig.ts  # Se usar TypeScript
+**/firebase-adminsdk.json   # Credenciais Admin SDK (se usar)
+
+# Variáveis de ambiente (se usar)
+.env
+.env.local
+.env.*.local
+
+# Editor/IDE
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Firebase Cloud Functions (se usar)
+/functions/lib
+/functions/node_modules

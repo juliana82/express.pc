@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -27,7 +28,15 @@ body {
         display: block; /* Evita espaços extras */
         margin: 0 auto; /* Garante centralização */
 }
-
+h1{
+    font-size: 48px;
+    color: #fcfcfc;
+    padding: 2px 0 10px 0;
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 30px;
+  }
 
 .header-title {
     font-size: 2rem;
@@ -69,7 +78,8 @@ body {
     border-radius: 5px;
 }
 
-button {
+button  {
+    font-size: 16px;    
     padding: 10px 15px;
     background-color: #0056A1;
     color: #fff;
@@ -78,8 +88,21 @@ button {
     cursor: pointer;
     margin-top: 10px;
     width: 100%;
+    cursor:pointer;
 }
-
+.btn-esqueci-senha{
+    font-size: 16px;    
+    padding: 10px 15px;
+    background-color: #0056A1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    cursor:pointer;
+    transition: background-color 0.3s ease; 
+}
 button:hover {
     background-color: #004080;
 }
@@ -233,4 +256,6 @@ video {
 
 footer p {
     margin: 0;
+    font-size: 14px;
+    color : #FFFFFF;
 }
