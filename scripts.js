@@ -1,7 +1,5 @@
-//script.js
 let computadoresDisponiveis = 300;
 
-// Função para mostrar a aba selecionada
 function showTab(tabId) {
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
@@ -10,7 +8,7 @@ function showTab(tabId) {
     document.getElementById(tabId).classList.add('active');
 }
 
-// Função para exibir a data e hora da ação
+// exibir a data e hora 
 function exibirDataHora(acao) {
     const now = new Date();
     const formattedDate = now.toLocaleDateString('pt-BR');
@@ -23,7 +21,7 @@ function exibirDataHora(acao) {
     mensagemDiv.style.fontWeight = 'bold';
 }
 
-// Função para confirmar a entrega
+// confirmar a entrega
 function confirmarEntrega() {
     const email = "celia123@gmail.com";
     const assunto = "Confirmação de Entrega do Computador";
@@ -39,12 +37,10 @@ Obrigado.`;
     } else {
         alert('Ação cancelada.');
     }
-
-    // Exibir a data e hora da entrega
     exibirDataHora("Entrega");
 }
 
-// Função para confirmar a devolução
+// confirmar a devolução
 function confirmarDevolucao() {
     const email = "celia123@gmail.com";
     const assunto = "Confirmação de Devolução do Computador";
@@ -60,12 +56,10 @@ Obrigado.`;
     } else {
         alert('Ação cancelada.');
     }
-
-    // Exibir a data e hora da devolução
     exibirDataHora("Devolução");
 }
 
-// Matérias por área
+// matérias 
 const materiasPorArea = {
     "gestao-comercial": ["Administração Financeira", "Gestão de Vendas", "Empreendedorismo"],
     "gestao-recursos-humanos": ["Comportamento Organizacional", "Recrutamento e Seleção", "Legislação Trabalhista"],
@@ -78,15 +72,12 @@ const materiasPorArea = {
     "seguranca-informacao": ["Criptografia", "Pentest e Ethical Hacking", "Normas de Segurança"]
 };
 
-// Função para atualizar as matérias com base na área selecionada
 function atualizarMaterias() {
     const areaSelecionada = document.getElementById("area").value;
     const materiaSelect = document.getElementById("materia");
     
-    // Limpa as opções atuais
     materiaSelect.innerHTML = '<option value="">Selecione uma matéria</option>';
     
-    // Adiciona novas opções
     if (materiasPorArea[areaSelecionada]) {
         materiasPorArea[areaSelecionada].forEach(materia => {
             let option = document.createElement("option");
@@ -97,7 +88,7 @@ function atualizarMaterias() {
     }
 }
 
-// Função para reservar um computador
+// reserva do computador
 function reservarComputador(event) {
     event.preventDefault();
     const horario = document.getElementById('horario').value;
@@ -116,10 +107,27 @@ function reservarComputador(event) {
     computadoresDisponiveis -= quantidade;
     document.getElementById('computadores-disponiveis').textContent = `Computadores disponíveis: ${computadoresDisponiveis}`;
     alert(`Reserva Confirmada!\nHorário: ${horario}\nQuantidade: ${quantidade}`);
-    // Adicione aqui o código para salvar as informações da reserva no backend, se necessário.
 }
 
-// Função de login
+// função pra conseguir ver a senha digitada
+function togglePasswordVisibility() {
+    const passwordField = document.getElementById('password');
+    const icon = document.querySelector('.toggle-password');
+    
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+        icon.title = "Ocultar senha";
+    } else {
+        passwordField.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+        icon.title = "Mostrar senha";
+    }
+}
+
+// parte do login
 function login(event) {
     event.preventDefault();
     const username = document.getElementById('username').value.trim();
@@ -143,8 +151,40 @@ function login(event) {
     } else {
         alert('Usuário ou senha incorretos.');
     }
+    
 }
 
+// parte do logout
+function logout() {
+    localStorage.removeItem("userToken"); 
+    sessionStorage.clear(); 
+
+    window.location.href = "index.html"; 
+}
+
+// parte do "esqueci minha senha" (socorro)
+function esqueciSenha() {
+    document.getElementById('login-page').style.display = 'none';
+    document.getElementById('recuperar-senha').style.display = 'block';
+}
+
+// "enviando" o email de recuperação pro camarada 
+function enviarEmailRecuperacao(event) {
+    event.preventDefault(); // Previne o envio do formulário
+
+    var email = document.getElementById('email').value;
+
+// mensagem avisando que o email foi enviado 
+    alert(`Um link de recuperação foi enviado para ${email}. Por favor, verifique sua caixa de entrada.`);
+    setTimeout(function() {
+        document.getElementById('recuperar-senha').style.display = 'none';
+        document.getElementById('login-page').style.display = 'block';
+    }, 3000); 
+}
+
+function voltarLogin() {
+    document.getElementById('login-page').style.display = 'block';
+    document.getElementById('recuperar-senha').style.display = 'none';
+}
 
 document.getElementById('area').addEventListener('change', atualizarMaterias);
-
