@@ -20,7 +20,7 @@ function showTab(tabId) {
     });
     document.getElementById(tabId).classList.add('active');
 }
-
+//função para mostrar a senha
 function togglePasswordVisibility() {
     const passwordField = document.getElementById('password');
     const icon = document.querySelector('.toggle-password');
@@ -38,6 +38,30 @@ function togglePasswordVisibility() {
     }
 }
 
+
+// login/logout
+function login(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const users = {
+        "novoUsuario": { password: "novaSenha", role: "professor" },
+        "outroUsuario": { password: "outraSenha", role: "funcionario" }
+    };
+
+    if (users[username] && users[username].password === password) {
+        if (users[username].role === "professor") {
+            window.location.href = "professor.html";
+        } else if (users[username].role === "funcionario") {
+            window.location.href = "funcionario.html";
+        }
+    } else {
+        alert("Usuário ou senha incorretos!");
+        document.getElementById("password").value = "";
+        document.getElementById("password").focus();
+    }
+}
 
 
 function logout() {
