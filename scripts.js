@@ -1,65 +1,5 @@
 let computadoresDisponiveis = 300;
 
-function showTab(tabId) {
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-        tab.classList.remove('active');
-    });
-    document.getElementById(tabId).classList.add('active');
-}
-
-// exibir a data e hora 
-function exibirDataHora(acao) {
-    const now = new Date();
-    const formattedDate = now.toLocaleDateString('pt-BR');
-    const formattedTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-    const mensagem = `${acao} realizada em: ${formattedTime} ${formattedDate}`;
-    
-    const mensagemDiv = document.getElementById('mensagem-acao');
-    mensagemDiv.textContent = mensagem;
-    mensagemDiv.style.color = 'green';
-    mensagemDiv.style.fontWeight = 'bold';
-}
-
-// confirmar a entrega
-function confirmarEntrega() {
-    const email = "celia123@gmail.com";
-    const assunto = "Confirmação de Entrega do Computador";
-    const corpo = `Olá Celia Alves,
-
-O computador foi entregue com sucesso e marcado como 'ok'.
-
-Obrigado.`;
-
-    if (confirm("Confirmação de entrega será enviada por email. Continuar?")) {
-        window.location.href = `mailto:${email}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
-        alert('Entrega confirmada e e-mail enviado.');
-    } else {
-        alert('Ação cancelada.');
-    }
-    exibirDataHora("Entrega");
-}
-
-// confirmar a devolução
-function confirmarDevolucao() {
-    const email = "celia123@gmail.com";
-    const assunto = "Confirmação de Devolução do Computador";
-    const corpo = `Olá Celia Alves,
-
-O computador foi devolvido com sucesso.
-
-Obrigado.`;
-
-    if (confirm("Confirmação de devolução será enviada por email. Continuar?")) {
-        window.location.href = `mailto:${email}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
-        alert('Devolução confirmada e e-mail enviado.');
-    } else {
-        alert('Ação cancelada.');
-    }
-    exibirDataHora("Devolução");
-}
-
-// matérias 
 const materiasPorArea = {
     "gestao-comercial": ["Administração Financeira", "Gestão de Vendas", "Empreendedorismo"],
     "gestao-recursos-humanos": ["Comportamento Organizacional", "Recrutamento e Seleção", "Legislação Trabalhista"],
@@ -72,23 +12,140 @@ const materiasPorArea = {
     "seguranca-informacao": ["Criptografia", "Pentest e Ethical Hacking", "Normas de Segurança"]
 };
 
-function atualizarMaterias() {
-    const areaSelecionada = document.getElementById("area").value;
-    const materiaSelect = document.getElementById("materia");
+// navegação e ui
+function showTab(tabId) {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.getElementById(tabId).classList.add('active');
+}
+//função para mostrar a senha
+function togglePasswordVisibility() {
+    const passwordField = document.getElementById('password');
+    const icon = document.querySelector('.toggle-password');
     
-    materiaSelect.innerHTML = '<option value="">Selecione uma matéria</option>';
-    
-    if (materiasPorArea[areaSelecionada]) {
-        materiasPorArea[areaSelecionada].forEach(materia => {
-            let option = document.createElement("option");
-            option.value = materia;
-            option.textContent = materia;
-            materiaSelect.appendChild(option);
-        });
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+        icon.title = "Ocultar senha";
+    } else {
+        passwordField.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+        icon.title = "Mostrar senha";
     }
 }
 
-// reserva do computador
+
+// login/logout
+function login(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const users = {
+        "novoUsuario": { password: "novaSenha", role: "professor" },
+        "outroUsuario": { password: "outraSenha", role: "funcionario" }
+    };
+
+    if (users[username] && users[username].password === password) {
+        if (users[username].role === "professor") {
+            window.location.href = "professor.html";
+        } else if (users[username].role === "funcionario") {
+            window.location.href = "funcionario.html";
+        }
+    } else {
+        alert("Usuário ou senha incorretos!");
+        document.getElementById("password").value = "";
+        document.getElementById("password").focus();
+    }
+}
+
+
+function logout() {
+    localStorage.removeItem("userToken"); 
+    sessionStorage.clear(); 
+    window.location.href = "index.html"; 
+}
+
+// botões da parte de recuperação de senha
+function mostrarRecuperacao() {
+    document.getElementById('form-login').style.display = 'none';
+    document.getElementById('form-recuperacao').style.display = 'block';
+}
+
+function voltarParaLogin() {
+    document.getElementById('form-recuperacao').style.display = 'none';
+    document.getElementById('form-login').style.display = 'block';
+
+    setTimeout(() => {
+        document.getElementById('form-login').style.display = 'flex';
+        document.getElementById('form-login').style.flexDirection = 'column';
+        document.getElementById('form-login').style.alignItems = 'center';
+    }, 50);
+}
+
+// login pela microsoft
+function loginMicrosoft() {
+    const clientId = "SEU_CLIENT_ID_AQUI";
+    const tenantId = "SEU_TENANT_ID_AQUI"; 
+    const redirectUri = "http://localhost:5500"; 
+
+    const authUrl = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize
+        ?client_id=${clientId}
+        &response_type=token
+        &redirect_uri=${encodeURIComponent(redirectUri)}
+        &scope=openid email profile
+        &response_mode=fragment`;
+
+    window.location.href = authUrl;
+}
+
+
+// recuperação de senha funcionando com o email
+function enviarEmailRecuperacao(event) {
+    document.getElementById('form-login').style.display = 'none';
+    document.getElementById('form-recuperacao').style.display = 'block';
+    document.getElementById('mensagem-recuperacao').style.display = 'none';
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const mensagem = document.getElementById('mensagem-recuperacao');
+    
+    if (email && email.includes('@')) {
+        mensagem.textContent = `E-mail de recuperação enviado para: ${email}`;
+        mensagem.style.color = 'green';
+        mensagem.style.display = 'block';
+        
+        document.getElementById('email').value = '';
+        
+        document.getElementById('email').focus();
+    } else {
+        mensagem.textContent = 'Por favor, insira um e-mail válido';
+        mensagem.style.color = 'red';
+        mensagem.style.display = 'block';
+    }
+}
+
+// quando volta pra página de login o layout da página fica todo fora do lugar
+// não entendi o motivo, isso aqui é uma tentativa minha de arrumar
+function voltarParaLogin() {
+    document.getElementById('form-recuperacao').style.display = 'none';
+        setTimeout(() => {
+        document.getElementById('form-login').style.display = 'block';
+        
+        document.getElementById('form-login').style.opacity = '0.99';
+        setTimeout(() => {
+            document.getElementById('form-login').style.opacity = '1';
+        }, 50);
+    }, 10);
+    
+    document.getElementById('mensagem-recuperacao').style.display = 'none';
+}
+
+
+// reserva e gestão de computadores
 function reservarComputador(event) {
     event.preventDefault();
     const horario = document.getElementById('horario').value;
@@ -109,82 +166,69 @@ function reservarComputador(event) {
     alert(`Reserva Confirmada!\nHorário: ${horario}\nQuantidade: ${quantidade}`);
 }
 
-// função pra conseguir ver a senha digitada
-function togglePasswordVisibility() {
-    const passwordField = document.getElementById('password');
-    const icon = document.querySelector('.toggle-password');
+function atualizarMaterias() {
+    const areaSelecionada = document.getElementById("area").value;
+    const materiaSelect = document.getElementById("materia");
     
-    if (passwordField.type === 'password') {
-        passwordField.type = 'text';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-        icon.title = "Ocultar senha";
-    } else {
-        passwordField.type = 'password';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-        icon.title = "Mostrar senha";
+    materiaSelect.innerHTML = '<option value="">Selecione uma matéria</option>';
+    
+    if (materiasPorArea[areaSelecionada]) {
+        materiasPorArea[areaSelecionada].forEach(materia => {
+            let option = document.createElement("option");
+            option.value = materia;
+            option.textContent = materia;
+            materiaSelect.appendChild(option);
+        });
     }
 }
 
-// parte do login
-function login(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-
-    const validUsers = {
-        'novoUsuario': 'novaSenha',
-        'outroUsuario': 'outraSenha'
-    };
-
-    if (validUsers[username] && validUsers[username] === password) {
-        document.getElementById('login-page').style.display = 'none';
-        if (username === 'novoUsuario') {
-            document.getElementById('professor-page').style.display = 'block';
-            showTab('reserva');
-        } else if (username === 'outroUsuario') {
-            document.getElementById('funcionario-page').style.display = 'block';
-            document.getElementById('recognition').style.display = 'block';
-            showTab('student-info');
-        }
-    } else {
-        alert('Usuário ou senha incorretos.');
-    }
+// confirmação
+function exibirDataHora(acao) {
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('pt-BR');
+    const formattedTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    const mensagem = `${acao} realizada em: ${formattedTime} ${formattedDate}`;
     
+    const mensagemDiv = document.getElementById('mensagem-acao');
+    mensagemDiv.textContent = mensagem;
+    mensagemDiv.style.color = 'green';
+    mensagemDiv.style.fontWeight = 'bold';
 }
 
-// parte do logout
-function logout() {
-    localStorage.removeItem("userToken"); 
-    sessionStorage.clear(); 
+function confirmarEntrega() {
+    const email = "celia123@gmail.com";
+    const assunto = "Confirmação de Entrega do Computador";
+    const corpo = `Olá Célia Alves,
 
-    window.location.href = "index.html"; 
+O computador foi entregue com sucesso e marcado como 'ok'.
+
+Obrigado.`;
+
+    if (confirm("Confirmação de entrega será enviada por email. Continuar?")) {
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+        alert('Entrega confirmada e e-mail enviado.');
+    } else {
+        alert('Ação cancelada.');
+    }
+    exibirDataHora("Entrega");
 }
 
-// parte do "esqueci minha senha" (socorro)
-function esqueciSenha() {
-    document.getElementById('login-page').style.display = 'none';
-    document.getElementById('recuperar-senha').style.display = 'block';
-}
+function confirmarDevolucao() {
+    const email = "celia123@gmail.com";
+    const assunto = "Confirmação de Devolução do Computador";
+    const corpo = `Olá Célia Alves,
 
-// "enviando" o email de recuperação pro camarada 
-function enviarEmailRecuperacao(event) {
-    event.preventDefault(); // Previne o envio do formulário
+O computador foi devolvido com sucesso.
 
-    var email = document.getElementById('email').value;
+Obrigado.`;
 
-// mensagem avisando que o email foi enviado 
-    alert(`Um link de recuperação foi enviado para ${email}. Por favor, verifique sua caixa de entrada.`);
-    setTimeout(function() {
-        document.getElementById('recuperar-senha').style.display = 'none';
-        document.getElementById('login-page').style.display = 'block';
-    }, 3000); 
-}
-
-function voltarLogin() {
-    document.getElementById('login-page').style.display = 'block';
-    document.getElementById('recuperar-senha').style.display = 'none';
+    if (confirm("Confirmação de devolução será enviada por email. Continuar?")) {
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+        alert('Devolução confirmada e e-mail enviado.');
+    } else {
+        alert('Ação cancelada.');
+    }
+    exibirDataHora("Devolução");
 }
 
 document.getElementById('area').addEventListener('change', atualizarMaterias);
