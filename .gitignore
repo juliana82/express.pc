@@ -12,7 +12,8 @@ package-lock.json        # Importante manter no repositório
 yarn.lock                # Importante manter no repositório
 npm-debug.log
 yarn-error.log
-firebaseauth.js
+FirebaseAuth.js
+
 
 
 # Arquivos de build e distribuição
@@ -24,9 +25,9 @@ out/
 .cache/
 
 # Configurações do Firebase (MUITO IMPORTANTE!)
-firebase-config.js       # Ou o nome correto do seu arquivo!
-src/config/firebaseConfig.ts  # Se usar TypeScript
-**/firebase-adminsdk.json   # Credenciais Admin SDK (se usar)
+firebase-config.js       
+src/config/firebaseConfig.ts  
+**/firebase-adminsdk.json  
 
 # Variáveis de ambiente (se usar)
 .env
