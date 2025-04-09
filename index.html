@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- HEAD -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressPC</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- BODY -->
+<body>
+    <header class="header"> <!-- cabeçalho da página/logo-->
+        <div class="header-container">
+            <img src="senacc.png" alt="Logo Senac" class="logo">
+            <h1 class="header-title">ExpressPC</h1>
+            <p class="header-subtitle">Sistema de Gestão de Computadores</p>
+        </div>
+    </header>
+
+<!-- MAIN CLASS -->
+<main class="main-content">
+    <section id="login-page" class="login-container card">
+        <div class="login-header">
+            <i class="fas fa-lock"></i>
+            <h2>Acesse o Sistema</h2>
+        </div>
+
+<form class="login-form" onsubmit="return login(event)">
+<!-- área de inserir o usuário -->
+    <div class="form-group">
+        <label for="username">
+            <i class="fas fa-user"></i> Usuário
+        </label>
+        <input type="text" id="username" placeholder="Digite seu usuário" required>
+    </div>
+
+<!-- área de inserir a senha -->
+    <div class="form-group password-container">
+        <label for="password"><i class="fas fa-lock"></i> Senha</label>
+            <div class="input-with-icon">
+                <input type="password" id="password" placeholder="Digite sua senha" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility()"></i>
+            </div>
+    </div>
+
+<!--- botões de 'entrar' e de 'esqueci senha' -->
+    <button type="submit" class="btn btn-primary btn-login">
+        <i class="fas fa-sign-in-alt"></i> Entrar
+    </button>
+    <button type="button" class="btn btn-link" onclick="esqueciSenha()">
+        <i class="fas fa-question-circle"></i> Esqueci minha senha
+    </button>
+</form>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <img src="senacc.png" alt="Logo Senac" class="footer-logo">
+        <p>Faculdade Senac | ExpressPC © 2025 - Todos os direitos reservados</p>
+        <div class="footer-links">
+            <a href="#"><i class="fas fa-question-circle"></i> Ajuda</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contato</a>
+            <a href="#"><i class="fas fa-shield-alt"></i> Privacidade</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js"></script>
+
+
+
+<!-- Seu script adicional -->
+<div id="signInMessage"></div>
+
+<script type="module" src="firebaseauth.js"></script>
+
+
+</body>
+</html>
