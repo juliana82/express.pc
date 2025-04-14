@@ -20,7 +20,7 @@ function showTab(tabId) {
     });
     document.getElementById(tabId).classList.add('active');
 }
-//função para mostrar a senha
+
 function togglePasswordVisibility() {
     const passwordField = document.getElementById('password');
     const icon = document.querySelector('.toggle-password');
@@ -37,7 +37,6 @@ function togglePasswordVisibility() {
         icon.title = "Mostrar senha";
     }
 }
-
 
 // login/logout
 function login(event) {
@@ -62,7 +61,6 @@ function login(event) {
         document.getElementById("password").focus();
     }
 }
-
 
 function logout() {
     localStorage.removeItem("userToken"); 
