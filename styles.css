@@ -1,5 +1,4 @@
-/* isso aqui é tipo um dicionário global das cores,
-serve pra não ter que ficar definindo elas em vários lugares */
+/* VARIÁVEIS GLOBAIS */
 :root {
     --primary-color: #0056A1;
     --primary-dark: #003d73;
@@ -13,12 +12,18 @@ serve pra não ter que ficar definindo elas em vários lugares */
     --transition: all 0.3s ease;
 }
 
-/* só pra garantir que todos os elementos tenham
-o mesmo comportamento independentemente do navegador */
+/* RESET E ESTILOS BASE */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 body {
@@ -28,9 +33,9 @@ body {
     color: #333;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
 }
 
+/* CABEÇALHO */
 .header {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
@@ -65,9 +70,19 @@ body {
     opacity: 0.9;
 }
 
+/* LAYOUT PRINCIPAL */
 .main-content {
     flex: 1;
-    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .card {
@@ -83,32 +98,26 @@ body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
+/* FORMS */
 .login-container {
+    width: 100%;
     max-width: 400px;
     margin: 2rem auto;
     text-align: center;
 }
 
-.login-header {
-    margin-bottom: 2rem;
-}
-
-.login-header i {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
 .login-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    align-items: center; /
+    gap: 10px; 
+    width: 100%;
+}
+
+.login-form .form-group {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
 }
 
 .form-group {
@@ -141,7 +150,18 @@ body {
     box-shadow: 0 0 0 3px rgba(0, 86, 161, 0.2);
 }
 
-/*parte de ocultar/mostrar a senha */
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* COMPONENTES DE FORMULÁRIO */
 .password-container {
     position: relative;
 }
@@ -169,7 +189,18 @@ body {
     width: 100%;
 }
 
-/* botões */
+.patrimonio-input {
+    width: 60px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: inherit;
+    display: inline-block;
+    text-align: center; 
+    font-size: 16px;
+}
+
+/* BOTÕES */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -182,6 +213,13 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0; 
+}
+
+
+.btn-login {
+    margin-bottom: 10px; 
 }
 
 .btn i {
@@ -194,6 +232,11 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+}
+
+.btn-login {
+    width: 100%; 
+    max-width: 300px;
 }
 
 .btn-primary:hover {
@@ -232,6 +275,77 @@ body {
     color: white;
 }
 
+.btn-link {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.login-form .btn {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+}
+
+.btn-microsoft {
+    background-color: #2F2F2F; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.btn-microsoft i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.btn-microsoft:hover {
+    background-color: #1a1a1a;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.action-buttons .btn {
+    flex: 1 1 150px; 
+    max-width: 200px;
+}
+
+/* COMPONENTES DE INTERFACE */
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.login-header i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -241,18 +355,59 @@ body {
     border-bottom: 1px solid #eee;
 }
 
-/* forms */
-.form-row {
-    display: flex;
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0;
 }
 
-.form-row .form-group {
-    flex: 1;
+.info-item {
+    display: flex;
+    flex-direction: column;
 }
 
-/* reconhecimento facial */
+.info-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-value {
+    padding-left: 1.75rem;
+}
+
+.student-card {
+    margin-top: 2rem;
+}
+
+/* MENSAGENS E ALERTAS */
+.message {
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: var(--border-radius);
+    text-align: center;
+    display: none;
+}
+
+.message.success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--success-color);
+    display: block;
+}
+
+.message.error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--danger-color);
+    display: block;
+}
+
+/* RECONHECIMENTO FACIAL */
 .reconhecimento-facial {
     text-align: center;
     margin-bottom: 2rem;
@@ -282,64 +437,7 @@ canvas {
     display: none;
 }
 
-.student-card {
-    margin-top: 2rem;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-}
-
-.info-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.info-label {
-    font-weight: 600;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.info-value {
-    padding-left: 1.75rem;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.action-buttons .btn {
-    flex: 1;
-}
-
-.message {
-    padding: 1rem;
-    margin: 1rem 0;
-    border-radius: var(--border-radius);
-    text-align: center;
-    display: none;
-}
-
-.message.success {
-    background-color: rgba(40, 167, 69, 0.1);
-    color: var(--success-color);
-    display: block;
-}
-
-.message.error {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: var(--danger-color);
-    display: block;
-}
-
+/* DISPONIBILIDADE */
 .availability {
     display: flex;
     align-items: center;
@@ -353,7 +451,7 @@ canvas {
     border-radius: var(--border-radius);
 }
 
-/* footers */
+/* RODAPÉ */
 .footer {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
@@ -393,7 +491,7 @@ canvas {
     opacity: 0.8;
 }
 
-/* media query pra fazer o layout ser responsivo em telas menores */
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
     .form-row {
         flex-direction: column;
