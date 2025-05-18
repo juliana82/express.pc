@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Administrador</title>
+    <link rel="stylesheet" href="styles.css"> 
+   
+</head>
+<body>
+
+    <!-- Cabeçalho da página/logo -->
+    <header class="header">
+        <div class="header-container">
+            <img src="senacc.png" alt="Logo Senac" class="logo">
+            <h1 class="header-title">ExpressPC</h1>
+            <p class="header-subtitle">Sistema de Gestão de Computadores</p>
+        </div>
+    </header>
+
+    <!-- Página do Administrador -->
+    <section id="funcionario-page" class="container card">
+        <div class="section-header">
+            <h2><i class="fas fa-user-cog"></i> Painel do Administrador</h2>
+            <button class="btn btn-logout" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </button>
+        </div>
+
+        <div class="button-group">
+            <button type="button">Editar Usuário</button><br>
+            <button type="button">Cadastrar Usuário</button><br>
+            <button type="button">Editar Reserva</button><br>
+            <button type="button">Gerenciar empréstimos</button><br>
+        </div>
+    </section>
+
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <img src="senacc.png" alt="Logo Senac" class="footer-logo">
+        <p>Faculdade Senac | ExpressPC © 2025 - Todos os direitos reservados</p>
+        <div class="footer-links">
+            <a href="https://wa.me/5599999999999" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contato
+            </a>
+        </div>            
+    </div>
+</footer>
+
+<script>
+// Exemplo: atribui a função de logout a um botão
+    document.getElementById("logoutButton").addEventListener("click", logout);
+  </script>
+  
+
+</body>
+</html>
