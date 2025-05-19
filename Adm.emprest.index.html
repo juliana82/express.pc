@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar reservas</title>
+    <link rel="stylesheet" href="styles.css">
+     <!-- Cabeçalho da página/logo -->
+    <header class="header">
+        <div class="header-container">
+            <img src="senacc.png" alt="Logo Senac" class="logo">
+            <h1 class="header-title">ExpressPC</h1>
+            <p class="header-subtitle">Sistema de Gestão de Computadores</p>
+        </div>
+    </header>
+</head>
+<body>
+    <div>
+<h1>Painel do admin</h1>
+<h2>Editar reservas</h2>
+    </div>
+
+<div class="info-item">
+<form>
+  <label for ="fname">Patrimonio:</label>
+    <input type ="text" id="fname" name="fname"><br>
+
+  <label for="Turno">Turno:</label>
+    <input type ="text" id="turno" name="turno"><br>
+
+  <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
+    <input type="date" id="data" name="data" required>
+  
+   <lanbel for="Quantidade">Quantidade:</lanbel>
+    <input typer="number" id="Quantidade" name="Quantidade"><br>
+    
+    <label for="Professor">Professor:</label>
+      <input type="text" id="professor"  name="professor"><br>
+
+    <label for="Turma">Turma:</label>
+      <input type="text" id="turma" name="turma"><br>
+
+    <label for="horario">Horario:</label>
+      <input type="text" id="horario" name="horario"><br>
+</form>
+</div>
+<div>
+ <button type="button">Excluir</button><br>
+<button type="submit">Salvar</button><br>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <img src="senacc.png" alt="Logo Senac" class="footer-logo">
+        <p>Faculdade Senac | ExpressPC © 2025 - Todos os direitos reservados</p>
+        <div class="footer-links">
+            <a href="https://wa.me/5599999999999" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contato
+            </a>
+        </div>            
+    </div>
+</footer>
+
+<script>
+// Exemplo: atribui a função de logout a um botão
+    document.getElementById("logoutButton").addEventListener("click", logout);
+  </script>
+  
+
+
+</body>
+</html>
