@@ -1,5 +1,18 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "firebase": "^10.14.1"
   }
+=======
+    "name": "expresspc",
+    "version": "1.0.0",
+    "description": "",
+    "main": "script.js",
+    "dependencies": {
+        "firebase": "^11.6.1"
+    },
+    "scripts": {
+        "start": "node server.js"
+    }
+>>>>>>> da67bfc (:bug: fix: package json)
 }
