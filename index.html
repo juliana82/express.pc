@@ -8,10 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <!-- SDKs do Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
 </head>
 
 <body>
@@ -35,31 +32,30 @@
                 <h2>Acesse o Sistema</h2>
             </div>
 
-            <!-- Formulário de Login -->
-            <form id="form-login" class="login-form">
-                <div class="form-group">
-                    <label for="email"><i class="fas fa-envelope"></i> E-mail</label>
-                    <input type="email" id="email" placeholder="Digite seu e-mail" required>
-                </div>
-                <div class="form-group password-container">
-                    <label for="password"><i class="fas fa-lock"></i> Senha</label>
-                    <div class="input-with-icon">
-                        <input type="password" id="password" placeholder="Digite sua senha" required>
-                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
-                    </div>
-                </div>
-                <button type="submit" id="submitSignIn" class="btn btn-primary btn-login">
-                    <i class="fas fa-sign-in-alt"></i> Entrar
-                </button>
-                <button type="button" class="btn btn-microsoft" id="btnMicrosoft">
-                    <i class="fab fa-microsoft"></i> Entrar com Microsoft
-                </button>
-                <button type="button" class="btn btn-link" id="btnRecuperacao">
-                    <i class="fas fa-question-circle"></i> Esqueci minha senha
-                </button>
-                <div id="mensagem-login" class="message"></div>
-            </form>
-
+           <!-- Formulário de Login -->
+<form id="form-login" class="login-form">
+    <div class="form-group">
+        <label for="email"><i class="fas fa-envelope"></i> E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+    </div>
+    <div class="form-group password-container">
+        <label for="password"><i class="fas fa-lock"></i> Senha</label>
+        <div class="input-with-icon">
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+            <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+        </div>
+    </div>
+    <button type="submit" id="submitSignIn" class="btn btn-primary btn-login">
+        <i class="fas fa-sign-in-alt"></i> Entrar
+    </button>
+    <button type="button" class="btn btn-microsoft" id="btnMicrosoft">
+        <i class="fab fa-microsoft"></i> Entrar com Microsoft
+    </button>
+    <button type="button" class="btn btn-link" id="btnRecuperacao">
+        <i class="fas fa-question-circle"></i> Esqueci minha senha
+    </button>
+    <div id="mensagem-login" class="message"></div>
+</form>
             <!-- Formulário de Recuperação de Senha -->
             <form id="form-recuperacao" class="login-form" style="display: none;">
                 <div class="form-group">
@@ -91,8 +87,7 @@
         </div>
     </footer>
 
-    <!-- Configuração do Firebase -->
-   
+
     <script src="scripts.js"></script>
 </body>
 </html>

@@ -170,6 +170,27 @@ function updateComputadoresDisponiveis() {
         `Computadores disponíveis: ${computadoresDisponiveis}`;
 }
 
+
+// No seu arquivo principal (ex: app.js)
+import { signInWithMicrosoftPopup } from './auth.js';
+
+// Teste rápido (pode colocar no console do navegador também)
+async function testeLogin() {
+  try {
+    const resultado = await signInWithMicrosoftPopup();
+    console.log("Funcionou! Usuário:", resultado.user);
+    alert("Login feito com: " + resultado.user.email);
+  } catch (erro) {
+    console.error("Erro:", erro);
+    alert("Ocorreu um erro: " + erro.message);
+  }
+}
+
+// Chame essa função quando quiser testar
+testeLogin();
+
+
+
 function atualizarMaterias() {
     const areaSelecionada = document.getElementById("area").value;
     const materiaSelect = document.getElementById("materia");
