@@ -54,6 +54,7 @@ document.getElementById("submitSignIn")?.addEventListener("click", async (e) => 
     alert(`Erro no login: ${error.message}`);
   }
 });
+// Exemplo de documento
 
 // Verificação de autenticação
 export function checkAuthRedirect() {
