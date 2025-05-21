@@ -16,8 +16,7 @@
     <header class="header"> <!-- cabeçalho da página/logo-->
         <div class="header-container">
             <img src="senacc.png" alt="Logo Senac" class="logo">
-            <h1 class="header-title">ExpressPC</h1>
-            <p class="header-subtitle">Sistema de Gestão de Computadores</p>
+
         </div>
     </header>
 
@@ -29,14 +28,13 @@
         </button>
     </div>
         
-    <div class="reservation card">
-        <h3><i class="fas fa-laptop"></i> Reservar Computadores</h3>
-        <form onsubmit="return reservarComputador(event)">
-            <div class="form-row">
+<div class="reservation card">
+    <h3><i class="fas fa-laptop"></i> Reservar Computadores</h3>
+    <form onsubmit="return reservarComputador(event)">
+        <div class="form-row">
             <div class="form-group">
                 <label for="area"><i class="fas fa-map-marker-alt"></i> Área</label>
-                <select id="area" name="area" required onchange="atualizarMaterias()">
-            <!-- selecionando o curso da pessoa -->
+                <select id="area" name="area" required>
                     <option value="">Selecione a área</option>
                     <option value="gestao-comercial">GESTÃO COMERCIAL</option>
                     <option value="gestao-recursos-humanos">GESTÃO DE RECURSOS HUMANOS</option>
@@ -45,14 +43,15 @@
                     <option value="area-tecnologia">ÁREA DE TECNOLOGIA</option>
                 </select>
             </div>
-            <!-- selecionando a matéria (estão salvas no js) -->
             <div class="form-group">
                 <label for="materia"><i class="fas fa-book"></i> Matéria</label>
-                    <select id="materia" name="materia" required>
-                        <option value="">Selecione uma área primeiro</option>
-                    </select>
+                <select id="materia" name="materia" required>
+                    <option value="">Selecione uma área primeiro</option>
+                </select>
             </div>
-            </div>
+        </div>
+    </form>
+</div>
             <!-- selecionando o turno -->
             <div class="form-group">
                 <label for="turno"><i class="fas fa-clock"></i> Turno</label>
@@ -95,16 +94,19 @@
                             <option value="20:00">20:00</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
-                        <input type="date" id="data" name="data" required>
-                    </div>
                 </div>
             <!-- quantidade de máquinas pra reservar -->
                 <div class="form-group">
                     <label for="quantidade"><i class="fas fa-laptop"></i> Quantidade de Computadores</label>
                     <input type="number" id="quantidade" min="1" max="300" placeholder="Digite a quantidade" required>
                 </div>
+                <br>
+            <!-- calendario -->
+                   <div>
+                        <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+
             <!-- botão pra confirmar a reserva -->
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-check-circle"></i> Confirmar Reserva
@@ -125,7 +127,6 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
-            <img src="senacc.png" alt="Logo Senac" class="footer-logo">
             <p>Faculdade Senac | ExpressPC © 2025 - Todos os direitos reservados</p>
             <div class="footer-links">
                 <a href="https://wa.me/5599999999999" target="_blank">
