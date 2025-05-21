@@ -1,4 +1,6 @@
-/* VARIÁVEIS GLOBAIS */
+/* ===================================================
+   VARIÁVEIS GLOBAIS
+=================================================== */
 :root {
     --primary-color: #0056A1;
     --primary-dark: #003d73;
@@ -12,7 +14,9 @@
     --transition: all 0.3s ease;
 }
 
-/* RESET E ESTILOS BASE */
+/* ===================================================
+   RESET E ESTILOS BASE
+=================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -21,7 +25,6 @@
 
 body, html {
     height: 100%;
-    margin: 0;
     display: flex;
     flex-direction: column;
 }
@@ -35,7 +38,9 @@ body {
     display: flex;
 }
 
-/* CABEÇALHO */
+/* ===================================================
+   CABEÇALHO
+=================================================== */
 .header {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
@@ -58,19 +63,9 @@ body {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.header-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.header-subtitle {
-    font-size: 1rem;
-    font-weight: 300;
-    opacity: 0.9;
-}
-
-/* LAYOUT PRINCIPAL */
+/* ===================================================
+   LAYOUT PRINCIPAL E CONTAINERS
+=================================================== */
 .main-content {
     flex: 1;
     display: flex;
@@ -98,7 +93,9 @@ body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* FORMS */
+/* ===================================================
+   FORMULÁRIOS
+=================================================== */
 .login-container {
     width: 100%;
     max-width: 400px;
@@ -109,7 +106,7 @@ body {
 .login-form {
     display: flex;
     flex-direction: column;
-    align-items: center; /
+    align-items: center; 
     gap: 10px; 
     width: 100%;
 }
@@ -120,11 +117,18 @@ body {
     margin: 10px auto;
 }
 
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
 .form-group {
     display: flex;
     flex-direction: column;
     text-align: left;
     gap: 0.5rem;
+    margin-bottom: 15px;
 }
 
 .form-group label {
@@ -141,6 +145,7 @@ body {
     border-radius: var(--border-radius);
     font-size: 1rem;
     transition: var(--transition);
+    width: 100%;
 }
 
 .form-group input:focus,
@@ -153,19 +158,23 @@ body {
 .form-row {
     display: flex;
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    margin: 1.5rem 0;
 }
 
 .form-row .form-group {
     flex: 1;
 }
 
-/* COMPONENTES DE FORMULÁRIO */
-.password-container {
-    position: relative;
+.form-edicao {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* ===================================================
+   CAMPOS ESPECIAIS
+=================================================== */
+.password-container,
 .input-with-icon {
     position: relative;
 }
@@ -194,13 +203,14 @@ body {
     border: 1px solid #ccc;
     border-radius: 3px;
     padding: 2px 5px;
-    font-size: inherit;
     display: inline-block;
     text-align: center; 
     font-size: 16px;
 }
 
-/* BOTÕES */
+/* ===================================================
+   BOTÕES
+=================================================== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -217,11 +227,6 @@ body {
     flex-shrink: 0; 
 }
 
-
-.btn-login {
-    margin-bottom: 10px; 
-}
-
 .btn i {
     font-size: 1rem;
 }
@@ -234,8 +239,39 @@ body {
     margin-top: 2rem;
 }
 
+.btn-admin {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none; 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 220px;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-admin:hover {
+    background-color: #0056b3;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
 .btn-login {
-    width: 100%; 
+    margin-bottom: 10px;
+    width: 100%;
     max-width: 300px;
 }
 
@@ -323,19 +359,14 @@ body {
     background-color: #1a1a1a;
 }
 
-.action-buttons {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
 .action-buttons .btn {
     flex: 1 1 150px; 
     max-width: 200px;
 }
 
-/* COMPONENTES DE INTERFACE */
+/* ===================================================
+   COMPONENTES DE INTERFACE E USUÁRIO
+=================================================== */
 .login-header {
     margin-bottom: 2rem;
 }
@@ -346,6 +377,73 @@ body {
     margin-bottom: 1rem;
 }
 
+.editar-usuario {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card-header h2 {
+    text-align: center;
+    background-color: #014C92;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.form-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.image-section {
+    width: 200px;
+    text-align: center;
+}
+
+.user-photo {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-excluir {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-voltar {
+    background-color: transparent;
+    color: #ff4d4d;
+    border: 2px solid #ff4d4d;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -353,6 +451,15 @@ body {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
+}
+
+.admin-header {
+    text-align: left;
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .info-grid {
@@ -383,7 +490,9 @@ body {
     margin-top: 2rem;
 }
 
-/* MENSAGENS E ALERTAS */
+/* ===================================================
+   ALERTAS E MENSAGENS
+=================================================== */
 .message {
     text-align: center;
     width: 100%;
@@ -391,7 +500,6 @@ body {
     padding: 1rem;
     margin: 1rem 0;
     border-radius: var(--border-radius);
-    text-align: center;
     display: none;
 }
 
@@ -407,7 +515,9 @@ body {
     display: block;
 }
 
-/* RECONHECIMENTO FACIAL */
+/* ===================================================
+   RECONHECIMENTO FACIAL
+=================================================== */
 .reconhecimento-facial {
     text-align: center;
     margin-bottom: 2rem;
@@ -437,7 +547,9 @@ canvas {
     display: none;
 }
 
-/* DISPONIBILIDADE */
+/* ===================================================
+   DISPONIBILIDADE
+=================================================== */
 .availability {
     display: flex;
     align-items: center;
@@ -451,7 +563,9 @@ canvas {
     border-radius: var(--border-radius);
 }
 
-/* RODAPÉ */
+/* ===================================================
+   RODAPÉ
+=================================================== */
 .footer {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
@@ -473,6 +587,7 @@ canvas {
 
 .footer-links {
     display: flex;
+    color: white;
     justify-content: center;
     gap: 1.5rem;
     margin-top: 1rem;
@@ -491,21 +606,23 @@ canvas {
     opacity: 0.8;
 }
 
-/* RESPONSIVIDADE */
+/* ===================================================
+   RESPONSIVIDADE
+=================================================== */
 @media (max-width: 768px) {
     .form-row {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .action-buttons {
         flex-direction: column;
     }
-    
+
     .info-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .header-title {
         font-size: 2rem;
     }
