@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressPC</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <img src="senacc.png" alt="Logo Senac" class="logo">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="admin-header">
+                        <i class="fas fa-tools"></i> Página do Admin
+                    </h2>
+                    <button class="btn btn-logout" onclick="logout()"> 
+                        <i class="fas fa-sign-out-alt"></i> Sair 
+                    </button>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="editar.html" class="btn-admin">
+                        <i class="fas fa-user-edit"></i> Editar Usuário
+                    </a>
+                    <a href="cadastrar.html" class="btn-admin">
+                        <i class="fas fa-user-plus"></i> Cadastrar Usuário
+                    </a>
+                    <a href="reserva.html" class="btn-admin">
+                        <i class="fas fa-calendar-alt"></i> Editar Reserva
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Faculdade Senac | ExpressPC © 2025 - Todos os direitos reservados</p>
+            <div class="footer-links">
+                <a href="https://wa.me/5599999999999" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contato
+                </a>
+            </div>            
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

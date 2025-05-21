@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário - ExpressPC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <img src="senacc.png" alt="Logo Senac" class="logo">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="card editar-usuario">
+                <div class="card-header">
+                    <h2>Cadastro de Usuário</h2>
+                </div>
+
+                <div class="user-content">
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="nome"><strong>Nome:</strong></label>
+                            <input type="text" id="nome" placeholder="Ex: Célia Alves">
+                        </div>
+                        <div class="form-group">
+                            <label for="matricula"><strong>Matrícula:</strong></label>
+                            <input type="text" id="matricula" placeholder="Ex: 211203">
+                        </div>
+                        <div class="form-group">
+                            <label for="turno"><strong>Turno:</strong></label>
+                            <input type="text" id="turno" placeholder="Ex: Matutino">
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><strong>E-mail:</strong></label>
+                            <input type="email" id="email" placeholder="Ex: celiaalves@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="turma"><strong>Turma:</strong></label>
+                            <input type="text" id="turma" placeholder="Ex: ADS 1">
+                        </div>
+                    </div>
+
+                    <div class="camera-container">
+        <div class="camera-view">
+            <video id="video" width="300" height="300" autoplay></video>
+            <canvas id="canvas" width="300" height="300"></canvas>
+        </div>
+        <button id="snap" class="btn btn-primary">
+            <i class="fas fa-camera"></i> Capturar Imagem
+        </button>
+    </div>
+</div>
+                <div class="actions">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Salvar
+                    </button>
+                    <a href="admin.html" class="btn-voltar">Voltar</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Faculdade Senac | ExpressPC © 2025 - Todos os direitos reservados</p>
+            <div class="footer-links">
+                <a href="https://wa.me/5599999999999" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contato
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
