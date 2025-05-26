@@ -4,7 +4,10 @@
     "description": "",
     "main": "script.js",
     "dependencies": {
-        "firebase": "^11.6.1"
+        "cors": "^2.8.5",
+        "express": "^5.1.0",
+        "firebase": "^11.6.1",
+        "mysql2": "^3.14.1"
     },
     "scripts": {
         "start": "node server.js"
