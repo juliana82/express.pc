@@ -1,129 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <!-- HEAD -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExpressPC</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="./favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <!-- BODY -->
+
 <body>
     <header class="header"> <!-- cabeçalho da página/logo-->
         <div class="header-container">
-            <img src="senacc.png" alt="Logo Senac" class="logo">
+            <img src="./senacc.png" alt="Logo Senac" class="logo">
 
         </div>
     </header>
 
-<section id="professor-page" class="container card">
-    <div class="section-header">
-        <h2><i class="fas fa-chalkboard-teacher"></i> Painel do Professor</h2>
-        <button class="btn btn-logout" onclick="logout()"> 
-            <i class="fas fa-sign-out-alt"></i> Sair
-        </button>
-    </div>
-        
-<div class="reservation card">
-    <h3><i class="fas fa-laptop"></i> Reservar Computadores</h3>
-    <form onsubmit="return reservarComputador(event)">
+    <section id="professor-page" class="container card">
+        <div class="section-header">
+            <h2><i class="fas fa-chalkboard-teacher"></i> Painel do Professor</h2>
+            <button class="btn btn-logout" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </button>
+        </div>
+
+        <div class="reservation card">
+            <h3><i class="fas fa-laptop"></i> Reservar Computadores</h3>
+            <form onsubmit="return reservarComputador(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="area"><i class="fas fa-map-marker-alt"></i> Área</label>
+                        <select id="area" name="area" required>
+                            <option value="">Selecione a área</option>
+                            <option value="gestao-comercial">GESTÃO COMERCIAL</option>
+                            <option value="gestao-recursos-humanos">GESTÃO DE RECURSOS HUMANOS</option>
+                            <option value="marketing">MARKETING</option>
+                            <option value="secretariado">SECRETARIADO</option>
+                            <option value="area-tecnologia">ÁREA DE TECNOLOGIA</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="materia"><i class="fas fa-book"></i> Matéria</label>
+                        <select id="materia" name="materia" required>
+                            <option value="">Selecione uma área primeiro</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- selecionando o turno -->
+        <div class="form-group">
+            <label for="turno"><i class="fas fa-clock"></i> Turno</label>
+            <select id="turno" name="turno" required>
+                <option value="">Selecione o turno</option>
+                <option value="matutino">Matutino</option>
+                <option value="noturno">Noturno</option>
+            </select>
+        </div>
         <div class="form-row">
             <div class="form-group">
-                <label for="area"><i class="fas fa-map-marker-alt"></i> Área</label>
-                <select id="area" name="area" required>
-                    <option value="">Selecione a área</option>
-                    <option value="gestao-comercial">GESTÃO COMERCIAL</option>
-                    <option value="gestao-recursos-humanos">GESTÃO DE RECURSOS HUMANOS</option>
-                    <option value="marketing">MARKETING</option>
-                    <option value="secretariado">SECRETARIADO</option>
-                    <option value="area-tecnologia">ÁREA DE TECNOLOGIA</option>
+                <label for="professor"><i class="fas fa-user-tie"></i> Professor</label>
+                <select id="professor" name="professor" required>
+                    <option value="">Selecione o professor</option>
+                    <option value="marcio-araya">Márcio Araya</option>
+                    <option value="edilberto">Edilberto</option>
+                    <option value="marcos-vinicios">Marcos Vinícios</option>
+                    <option value="clenio">Clênio</option>
                 </select>
             </div>
+            <!-- o horário da reserva -->
             <div class="form-group">
-                <label for="materia"><i class="fas fa-book"></i> Matéria</label>
-                <select id="materia" name="materia" required>
-                    <option value="">Selecione uma área primeiro</option>
+                <label for="horario"><i class="fas fa-hourglass-start"></i> Horário</label>
+                <select id="horario" name="horario" required>
+                    <option value="">Selecione o horário</option>
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
                 </select>
             </div>
         </div>
-    </form>
-</div>
-            <!-- selecionando o turno -->
-            <div class="form-group">
-                <label for="turno"><i class="fas fa-clock"></i> Turno</label>
-                    <select id="turno" name="turno" required>
-                        <option value="">Selecione o turno</option>
-                        <option value="matutino">Matutino</option>
-                        <option value="noturno">Noturno</option>
-                    </select>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="professor"><i class="fas fa-user-tie"></i> Professor</label>
-                        <select id="professor" name="professor" required>
-                            <option value="">Selecione o professor</option>
-                            <option value="marcio-araya">Márcio Araya</option>
-                            <option value="edilberto">Edilberto</option>
-                            <option value="marcos-vinicios">Marcos Vinícios</option>
-                            <option value="clenio">Clênio</option>
-                        </select>
-                    </div>
-            <!-- o horário da reserva -->
-                    <div class="form-group">
-                        <label for="horario"><i class="fas fa-hourglass-start"></i> Horário</label>
-                        <select id="horario" name="horario" required>
-                            <option value="">Selecione o horário</option>
-                            <option value="06:00">06:00</option>
-                            <option value="07:00">07:00</option>
-                            <option value="08:00">08:00</option>
-                            <option value="09:00">09:00</option>
-                            <option value="10:00">10:00</option>
-                            <option value="11:00">11:00</option>
-                            <option value="12:00">12:00</option>
-                            <option value="13:00">13:00</option>
-                            <option value="14:00">14:00</option>
-                            <option value="15:00">15:00</option>
-                            <option value="16:00">16:00</option>
-                            <option value="17:00">17:00</option>
-                            <option value="18:00">18:00</option>
-                            <option value="19:00">19:00</option>
-                            <option value="20:00">20:00</option>
-                        </select>
-                    </div>
-                </div>
-            <!-- quantidade de máquinas pra reservar -->
-                <div class="form-group">
-                    <label for="quantidade"><i class="fas fa-laptop"></i> Quantidade de Computadores</label>
-                    <input type="number" id="quantidade" min="1" max="300" placeholder="Digite a quantidade" required>
-                </div>
-                <br>
-            <!-- calendario -->
-                   <div>
-                        <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
-                        <input type="date" id="data" name="data" required>
-                    </div>
+        <!-- quantidade de máquinas pra reservar -->
+        <div class="form-group">
+            <label for="quantidade"><i class="fas fa-laptop"></i> Quantidade de Computadores</label>
+            <input type="number" id="quantidade" min="1" max="300" placeholder="Digite a quantidade" required>
+        </div>
+        <br>
+        <!-- calendario -->
+        <div>
+            <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
+            <input type="date" id="data" name="data" required>
+        </div>
 
-            <!-- botão pra confirmar a reserva -->
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-check-circle"></i> Confirmar Reserva
-                </button>
+        <!-- botão pra confirmar a reserva -->
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-check-circle"></i> Confirmar Reserva
+        </button>
 
-<!--<button type="button" class="btn btn-danger" onclick="cancelarReserva()" style="margin-top: 10px;">
+        <!--<button type="button" class="btn btn-danger" onclick="cancelarReserva()" style="margin-top: 10px;">
 <i class="fas fa-times-circle"></i> Cancelar Reserva
 </button> botão pra cancelar a reserva-->
 
-            </form>
-            <!-- partezinha que mostra a quantidade de máquinas disponíveis -->
-            <div id="mensagem-reserva" class="message"></div>
-            <div id="computadores-disponiveis" class="availability">
-                <i class="fas fa-laptop-code"></i> Computadores disponíveis: <span id="available-count">300</span>
-            </div>
+        </form>
+        <!-- partezinha que mostra a quantidade de máquinas disponíveis -->
+        <div id="mensagem-reserva" class="message"></div>
+        <div id="computadores-disponiveis" class="availability">
+            <i class="fas fa-laptop-code"></i> Computadores disponíveis: <span id="available-count">300</span>
         </div>
-</section>
+        </div>
+    </section>
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
@@ -132,9 +134,10 @@
                 <a href="https://wa.me/5599999999999" target="_blank">
                     <i class="fab fa-whatsapp"></i> Contato
                 </a>
-            </div>            
+            </div>
         </div>
     </footer>
-<script src="scripts.js"></script>
+    <script src="./scripts.js"></script>
 </body>
+
 </html>
