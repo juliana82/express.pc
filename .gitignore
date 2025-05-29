@@ -30,6 +30,7 @@ src/config/firebaseConfig.ts
 # Variáveis de ambiente 
 .env.local
 .env.*.local
+.env
 
 # Editor/IDE
 .idea/
