@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExpressPC</title>
-    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="icon" type="image/png" href="./imagens/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./styles.css">
@@ -17,7 +17,7 @@
 <body>
     <header class="header">
         <div class="header-container">
-            <img src="./senacc.png" alt="Logo Senac" class="logo">
+            <img src="./imagens/senacc.png" alt="Logo Senac" class="logo">
         </div>
     </header>
 
@@ -30,7 +30,7 @@
             </div>
 
             <!-- Formulário de Login -->
-            <form id="form-login" class="login-form">
+            <form id="form-login" class="login-form" onsubmit="login(event)">
                 <div class="form-group">
                     <label for="email"><i class="fas fa-envelope"></i> E-mail</label>
                     <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
@@ -85,7 +85,10 @@
     </footer>
 
 
-    <script src="./scripts.js"></script>
+<script src="./scripts/scripts.js"></script>
+<script src="./scripts/login.js"></script>
+<script src="./scripts/navegacao.js"></script>
+
 </body>
 
 </html>
